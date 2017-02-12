@@ -19,7 +19,8 @@ defmodule ElixirLightningTalks.Mixfile do
   def application do
     [mod: {ElixirLightningTalks, []},
      applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :ja_serializer, :cors_plug,
+                    :guardian, :comeonin]]
   end
 
   # Specifies which paths to compile per environment.
@@ -37,7 +38,9 @@ defmodule ElixirLightningTalks.Mixfile do
      {:gettext, "~> 0.11"},
      {:ja_serializer, "~> 0.11.2"},
      {:cowboy, "~> 1.0"},
-     {:cors_plug, "~> 1.1"}
+     {:cors_plug, "~> 1.1"},
+     {:comeonin, "~> 3.0"},
+     {:guardian, "~> 0.14.2"}
    ]
   end
 

@@ -7,6 +7,7 @@ defmodule ElixirLightningTalks.Router do
 
   scope "/api", ElixirLightningTalks do
     pipe_through :api
+    post "/register", RegistrationController, :create
     resources "/alchemists", AlchemistController, except: [:new, :edit]
     resources "/session", SessionController, only: [:index]
   end
