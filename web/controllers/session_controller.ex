@@ -27,7 +27,7 @@ defmodule ElixirLightningTalks.SessionController do
 
         true ->
           # Unsuccessful login
-          Logger.warning "Email " <> email <> " just failed to login"
+          Logger.warn "Email " <> email <> " just failed to login"
           conn
           |> put_status(401)
           |> render(ElixirLightningTalks.ErrorView, "401.json") # 401
