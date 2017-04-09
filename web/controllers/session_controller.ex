@@ -1,12 +1,13 @@
 defmodule ElixirLightningTalks.SessionController do
-  use ElixirLightningTalks.Web, :controller
+  use ElixirLightningTalks.Web, :controller # use - bring external functionality into current context
 
-  import Ecto.Query, only: [where: 2]
+  import Ecto.Query, only: [where: 2] # import functions from module... where > Ecto.Query.where
   import Comeonin.Bcrypt
   import Logger
 
-  alias ElixirLightningTalks.Alchemist
+  alias ElixirLightningTalks.Alchemist # shorten module reference to Alchemist (can also specify shorter name w/ alias)
 
+  # action(conn, map of desired params -- can also be _params to allow anything)
   def create(conn, %{"grant_type" => "password",
   	"email" => email,
   	"password" => password}) do
@@ -15,8 +16,8 @@ defmodule ElixirLightningTalks.SessionController do
     	## Handle a user login
       alchemist = Alchemist
       |> where(email: ^email)
-      |> Repo.one!
-      cond do
+      |> Repo.one! # Fetches single result, ! raises error if none found
+      cond do # akin to else if clauses... stops at first evaluation of true
         checkpw(password, alchemist.encrypted_password) ->
           # Successful login
           Logger.info "Email " <> email <> " just logged in"
